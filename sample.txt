@@ -1,0 +1,36 @@
+Stack menu: 
+'Insert' to push
+'Remove' to pop
+'Peek' to see the top most element
+'Size' to see the size of stack
+'Print' to see the entire working stack
+'End to quit
+
+Enter a command: insert
+Enter a number for the stack: 1
+Enter a command: insert 
+Enter a number for the stack: 2
+Enter a command: insert
+Enter a number for the stack: 6
+Enter a command: print
+Current working stack
+6
+2
+1
+Enter a command: insert 
+Enter a number for the stack: 7
+Enter a command: peek
+Top most element in the stack: 7
+Enter a command: remove
+Enter a command: print
+Current working stack
+6
+2
+1
+Enter a command: insert 
+Enter a number for the stack: 12
+Enter a command: peek
+Top most element in the stack: 12
+Enter a command: size
+4
+Enter a command: quit
