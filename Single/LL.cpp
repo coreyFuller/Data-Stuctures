@@ -1,12 +1,13 @@
 #include <iostream>
-#include <cstdlib>
 using namespace std;
 
 
-typedef struct Node {
+struct Node {
   int data;
-  struct Node * next;  
-}Node;
+  Node * next;
+  Node(){data = 0; next = nullptr;}
+  Node(int d, Node * n) {data = d; next = n;}
+};
 
 class LinkedList {
 
@@ -21,7 +22,6 @@ public:
   void print();
   void push_front(int );
   void pop_front();
-  void deleteList();
   ~LinkedList();
 };
 
@@ -41,100 +41,63 @@ int main(int argc, char * argv[]) {
   LL.print();
   LL.push_front(10);
   LL.print();
-  LL.deleteList();
-  LL.print();
   return 0;
 }
 
 LinkedList::LinkedList() {
-
-  head = NULL;
-
+   head = nullptr;
 }
 
 LinkedList::~LinkedList() {
 
-  delete [] head;
-  
-}
-
-void LinkedList::deleteList() {
-
-  Node * temp;
+  cout << "Deleting List..." << endl;
   Node * current = head;
 
-  while(current != NULL) {
-
-    temp = current->next;
-    current->next = NULL;
-    free(current);
-    current = temp;
-    
+  while(head) {
+    current = head->next;
+    delete head;
+    head = current;
   }
-
-  head = NULL;
- 
+  print();
 }
 
 void LinkedList::pop_front() {
 
+  if(head) {
   Node * temp = head;
   head = head->next;
-  temp->next = NULL;
-  free(temp);
-
+  delete temp;
+  }
 }
+
 void LinkedList::push_front(int num) {
 
-  Node * newNode = new Node;
-  newNode->data = num;
-  newNode->next = NULL;
-  Node * temp = head;
-  
-  if (head == NULL) {
-    head = newNode;
-  }
-  else {
-    head = newNode;
-    newNode->next = temp;
-  }   
+  head = new Node(num, head);
 }
 
 void LinkedList::push_back(int num){
 
-  Node * newNode = new Node;
+  Node * newNode = new Node(num, nullptr);
   Node * temp = head;
-  newNode->data = num;
-  newNode->next = NULL;
   
-  if( head == NULL) {
+  if(!head) {
     head = newNode;
    }
-
   else {
-  while(temp->next != NULL) {
+  while(temp->next) {
     temp = temp->next;
   }
-  
   temp->next = newNode;
   }
 }
 
 void LinkedList::print() {
 
-  Node * temp = head;
-
-  if (head == NULL) {
-    cout << "List is empty!" << endl << endl;
+  if(head) {
+    for(Node * temp = head; temp; temp = temp->next) {
+    cout << temp->data << endl;
+    }
+    cout << endl;
   }
-  else {
-  while(temp != NULL) {
-
-    cout << temp->data << endl;;
-    temp = temp->next;
-
-  }
-  
-  cout << endl;
-  }
+  else return;
 }
