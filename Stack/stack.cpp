@@ -11,23 +11,19 @@ Stack::Stack() {
 }
 
  void Stack::push(int num) {
-    head = new Node(num, head);
-    count++;
+   head = new Node(num, head);
  }
-
+    
 void Stack::pop() {
     
     if(!head){
-        cout << "List is empty!" << endl;
+        cout << "Stack is empty!" << endl;
         return;
     }
-    else {
-        Node * temp = head;
-        head = head->next;
-        delete temp;
-        count--;
-    }
- }
+    Node * temp = head->next;
+    delete head;
+    head = temp;
+}
 
  int Stack::peek() {
 

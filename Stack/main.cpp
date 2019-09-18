@@ -8,7 +8,7 @@ int main(int argc, char * argv[]) {
     int num;
 
     cout << "Stack menu: " << endl;
-    cout << "'Insert' to push" << "\n" << "'Remove' to pop" << "\n";
+    cout << "'push' to insert at the top of the stack" << "\n" << "'pop' to remove from the top of the stack" << "\n";
     cout << "'Peek' to see the top most element\n'Size' to see the size of stack" << endl;
     cout << "'Print' to see the entire working stack" << endl;
     cout << "'End to quit" << endl << endl;
@@ -17,12 +17,12 @@ int main(int argc, char * argv[]) {
  
         cout << "Enter a command: ";
         cin >> command;
-        if ( command == "Insert" || command == "insert"){
+        if ( command == "Push" || command == "push"){
              cout << "Enter a number for the stack: ";
                 cin >> num;
             stack.push(num);
         }
-        else if(command == "Remove" || command == "remove") 
+        else if(command == "Pop" || command == "pop") 
             stack.pop();
         else if(command == "peek" || command == "Peek") 
             stack.peek();
